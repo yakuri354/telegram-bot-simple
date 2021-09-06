@@ -28,16 +28,16 @@ newtype UpdateId = UpdateId Int32
 -- | This object represents an incoming update.
 -- At most __one__ of the optional parameters can be present in any given update.
 data Update = Update
-  { updateUpdateId          :: UpdateId -- ^ The update‘s unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
-  , updateMessage           :: Maybe Message -- ^ New incoming message of any kind — text, photo, sticker, etc.
-  , updateEditedMessage     :: Maybe Message -- ^ New version of a message that is known to the bot and was edited
-  , updateChannelPost       :: Maybe Message -- ^ New incoming channel post of any kind — text, photo, sticker, etc.
-  , updateEditedChannelPost :: Maybe Message -- ^ New version of a channel post that is known to the bot and was edited
+  { updateUpdateId           :: UpdateId -- ^ The update‘s unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
+  , updateMessage            :: Maybe Message -- ^ New incoming message of any kind — text, photo, sticker, etc.
+  , updateEditedMessage      :: Maybe Message -- ^ New version of a message that is known to the bot and was edited
+  , updateChannelPost        :: Maybe Message -- ^ New incoming channel post of any kind — text, photo, sticker, etc.
+  , updateEditedChannelPost  :: Maybe Message -- ^ New version of a channel post that is known to the bot and was edited
 
-  , updateInlineQuery :: Maybe InlineQuery -- ^ New incoming inline query
---   , updateChosenInlineResult :: Maybe ChosenInlineResult -- ^ The result of an inline query that was chosen by a user and sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.
+  , updateInlineQuery        :: Maybe InlineQuery -- ^ New incoming inline query
+  , updateChosenInlineResult :: Maybe ChosenInlineResult -- ^ The result of an inline query that was chosen by a user and sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.
 
-  , updateCallbackQuery     :: Maybe CallbackQuery -- ^ New incoming callback query
+  , updateCallbackQuery      :: Maybe CallbackQuery -- ^ New incoming callback query
 
 --   , updateShippingQuery :: Maybe ShippingQuery -- ^ New incoming shipping query. Only for invoices with flexible price
 --   , updatePreCheckoutQuery :: Maybe PreCheckoutQuery -- ^ New incoming pre-checkout query. Contains full information about checkout

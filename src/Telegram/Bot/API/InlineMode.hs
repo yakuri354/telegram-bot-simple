@@ -52,9 +52,20 @@ answerInlineQuery = client (Proxy @AnswerInlineQuery)
 data AnswerInlineQueryRequest = AnswerInlineQueryRequest
   { answerInlineQueryRequestInlineQueryId :: InlineQueryId
   , answerInlineQueryRequestResults       :: [InlineQueryResult]
-  } deriving (Generic)
+  } deriving (Generic, Show)
 
 instance ToJSON AnswerInlineQueryRequest where toJSON = gtoJSON
 instance FromJSON AnswerInlineQueryRequest where parseJSON = gparseJSON
+
+data ChosenInlineResult = ChosenInlineResult 
+  { chosenInlineResultResultId        :: InlineQueryResultId
+  , chosenInlineResultFrom            :: User
+  , chosenInlineResultLocation        :: Maybe Location
+  , chosenInlineResultInlineMessageId :: Maybe MessageId
+  , chosenInlineResultQuery           :: Text
+  } deriving (Generic, Show)
+
+instance ToJSON ChosenInlineResult where toJSON = gtoJSON
+instance FromJSON ChosenInlineResult where parseJSON = gparseJSON
 
 deriveJSON' ''InlineQuery
