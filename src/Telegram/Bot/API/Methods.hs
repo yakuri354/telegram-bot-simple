@@ -77,7 +77,7 @@ forwardMessage = client (Proxy @ForwardMessage)
 data SomeChatId
   = SomeChatId ChatId       -- ^ Unique chat ID.
   | SomeChatUsername Text   -- ^ Username of the target channel.
-  deriving (Generic)
+  deriving (Generic, Show)
 
 instance ToJSON   SomeChatId where toJSON = genericSomeToJSON
 instance FromJSON SomeChatId where parseJSON = genericSomeParseJSON
@@ -90,7 +90,7 @@ data SomeReplyMarkup
   | SomeReplyKeyboardMarkup  ReplyKeyboardMarkup
   | SomeReplyKeyboardRemove  ReplyKeyboardRemove
   | SomeForceReply           ForceReply
-  deriving (Generic)
+  deriving (Generic, Show)
 
 instance ToJSON   SomeReplyMarkup where toJSON = genericSomeToJSON
 instance FromJSON SomeReplyMarkup where parseJSON = genericSomeParseJSON
@@ -99,7 +99,7 @@ data ParseMode
   = Markdown
   | HTML
   | MarkdownV2
-  deriving (Generic)
+  deriving (Generic, Show)
 
 instance ToJSON   ParseMode
 instance FromJSON ParseMode
@@ -213,3 +213,21 @@ toSendDocument ch df = SendDocumentRequest
   , sendDocumentReplyToMessageId = Nothing
   , sendDocumentReplyMarkup = Nothing
   }
+
+data AnswerCallbackQueryRequest = AnswerCallbackQueryRequest 
+  { answerCallbackQueryCallbackQueryId :: CallbackQueryId -- :|
+  , answerCallbackQueryText :: Maybe Text
+  , answerCallbackQueryShowAlert :: Maybe Bool
+  , answerCallbackQueryUrl :: Maybe Text -- TODO Url
+  , answerCallbackQueryCacheTime :: Maybe Int
+  } deriving (Generic, Show)
+
+instance ToJSON   AnswerCallbackQueryRequest where toJSON = gtoJSON
+instance FromJSON AnswerCallbackQueryRequest where parseJSON = gparseJSON
+
+type AnswerCallbackQuery = "answerCallbackQuery"
+  :> ReqBody '[JSON] AnswerCallbackQueryRequest
+  :> Post '[JSON] (Response Bool)
+
+answerCallbackQuery :: AnswerCallbackQueryRequest -> ClientM (Response Bool)
+answerCallbackQuery = client (Proxy @AnswerCallbackQuery)

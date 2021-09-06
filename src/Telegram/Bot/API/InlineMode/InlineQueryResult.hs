@@ -10,6 +10,7 @@ import           GHC.Generics                    (Generic)
 
 import           Telegram.Bot.API.Internal.Utils
 import           Telegram.Bot.API.InlineMode.InputMessageContent
+import           Telegram.Bot.API.Methods
 
 -- | This object represents one result of an inline query
 data InlineQueryResult = InlineQueryResult
@@ -17,6 +18,7 @@ data InlineQueryResult = InlineQueryResult
   , inlineQueryResultId :: InlineQueryResultId -- ^ Unique identifier for this result, 1-64 Bytes
   , inlineQueryResultTitle :: Maybe Text -- ^ Title of the result (only valid for "Article", "Photo", "Gif", "Mpeg4Gif", "Video", "Audio", "Voice", "Document", "Location", "Venue", "CachedPhoto", "CachedGif", "CachedMpeg4Gif", "CachedDocument", "CachedVideo", "CachedVoice" types of results)
   , inlineQueryResultInputMessageContent :: Maybe InputMessageContent
+  , inlineQueryResultReplyMarkup :: Maybe SomeReplyMarkup
 --  , inlineQueryResultContact  :: Maybe Contact
   } deriving (Generic, Show)
 

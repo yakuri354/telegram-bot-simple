@@ -37,7 +37,7 @@ data EditMessageTextRequest = EditMessageTextRequest
   , editMessageTextParseMode             :: Maybe ParseMode -- ^ Send 'Markdown' or 'HTML', if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
   , editMessageTextDisableWebPagePreview :: Maybe Bool -- ^ Disables link previews for links in this message.
   , editMessageTextReplyMarkup           :: Maybe SomeReplyMarkup -- ^ Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
-} deriving (Generic)
+} deriving (Generic, Show)
 
 instance ToJSON   EditMessageTextRequest where toJSON = gtoJSON
 instance FromJSON EditMessageTextRequest where parseJSON = gparseJSON

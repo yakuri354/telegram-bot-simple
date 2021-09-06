@@ -46,7 +46,7 @@ handleAction action model = case action of
           AnswerInlineQueryRequest
             queryId
             [
-              InlineQueryResult InlineQueryResultArticle (InlineQueryResultId msg) (Just msg) (Just (defaultInputTextMessageContent msg))
+              InlineQueryResult InlineQueryResultArticle (InlineQueryResultId msg) (Just msg) (Just (defaultInputTextMessageContent msg)) Nothing
             ]
         )
       )
