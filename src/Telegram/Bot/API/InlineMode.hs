@@ -69,8 +69,8 @@ data ChosenInlineResult = ChosenInlineResult
   { chosenInlineResultResultId        :: InlineQueryResultId -- ^ The unique identifier for the result that was chosen.
   , chosenInlineResultFrom            :: User            -- ^ The user that chose the result.
   , chosenInlineResultLocation        :: Maybe Location  -- ^ Sender location, only for bots that require user location.
-  , chosenInlineResultInlineMessageId :: Maybe MessageId -- ^ Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message.
-  , chosenInlineResultQuery           :: InlineQueryId   -- ^ The query that was used to obtain the result.
+  , chosenInlineResultInlineMessageId :: Maybe Text -- ^ Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message.
+  , chosenInlineResultQuery           :: Text   -- ^ The query that was used to obtain the result.
   } deriving (Generic, Show)
 
 instance ToJSON ChosenInlineResult where toJSON = gtoJSON
