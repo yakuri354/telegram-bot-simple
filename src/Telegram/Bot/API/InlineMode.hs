@@ -61,7 +61,7 @@ data ChosenInlineResult = ChosenInlineResult
   { chosenInlineResultResultId        :: InlineQueryResultId
   , chosenInlineResultFrom            :: User
   , chosenInlineResultLocation        :: Maybe Location
-  , chosenInlineResultInlineMessageId :: Maybe MessageId
+  , chosenInlineResultInlineMessageId :: Maybe Text
   , chosenInlineResultQuery           :: Text
   } deriving (Generic, Show)
 
