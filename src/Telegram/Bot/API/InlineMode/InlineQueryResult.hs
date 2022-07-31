@@ -11,6 +11,7 @@ import           GHC.Generics                    (Generic)
 import           Telegram.Bot.API.Internal.Utils
 import           Telegram.Bot.API.Types (Contact)
 import           Telegram.Bot.API.InlineMode.InputMessageContent
+import 		 Telegram.Bot.API.Methods
 
 -- | This object represents one result of an inline query
 data InlineQueryResult = InlineQueryResult
